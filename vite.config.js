@@ -5,6 +5,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/Unsplash-demo/",
   server: {
     port: 3000,
     open: true,
