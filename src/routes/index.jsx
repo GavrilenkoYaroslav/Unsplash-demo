@@ -1,4 +1,4 @@
-import { createBrowserRouter, createHashRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../layouts/main';
 import MainPage from '../pages/main';
 import ImagePreview from '../components/modals/imagePreview';
@@ -21,4 +21,6 @@ export default createBrowserRouter([
       }
     ],
   }
-]);
+], {
+  basename: '/Unsplash-demo'
+});

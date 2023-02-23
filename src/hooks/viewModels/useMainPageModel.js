@@ -4,7 +4,7 @@ import { usePhotos } from '../queries/usePhotos';
 import { usePhoto } from '../queries/usePhoto';
 import { useScrollBottomTrigger } from '../utility/useScrollBottomTriger';
 
-const useMainPageData = () => {
+const useMainPageModel = () => {
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
   const [currentStep, setCurrentStep] = useState(0);
@@ -39,5 +39,5 @@ const useMainPageData = () => {
 };
 
 export {
-  useMainPageData,
+  useMainPageModel,
 }

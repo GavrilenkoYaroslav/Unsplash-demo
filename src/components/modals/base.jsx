@@ -9,7 +9,8 @@ export default React.forwardRef(function BaseModal({ children, closeLink = '/', 
   const navigate = useNavigate();
   useScrollBlocker(true);
   const wrapperRef = useRef(null);
-  const [closing, setClosing] = useState(false);
+  const [isClosing, setClosing] = useState(false);
+  const [isOpening, setOpening] = useState(true);
 
   const goBack = () => {
     navigate(closeLink);
@@ -17,7 +18,10 @@ export default React.forwardRef(function BaseModal({ children, closeLink = '/', 
 
   const onAnimationEnd = (e) => {
     if (e.target !== wrapperRef.current) return;
-    if (!closing) return;
+    if (!isClosing) {
+      setOpening(false);
+      return;
+    }
 
     goBack();
   };
@@ -37,9 +41,9 @@ export default React.forwardRef(function BaseModal({ children, closeLink = '/', 
 
   return ReactDOM.createPortal(
     <div ref={wrapperRef} onClick={onWrapperClick} onAnimationEnd={onAnimationEnd}
-         className={`fixed z-10 inset-0 bg-black/50 flex items-center justify-center ${closing ? 'opacity-0 animate-fadeOut' : 'opacity-1 animate-fadeIn'} ${overlayClassName}`}>
+         className={`fixed z-10 inset-0 bg-black/50 flex items-center justify-center ${isOpening || isClosing ? 'group transform' : ''} ${isClosing ? 'opacity-0 animate-fadeOut' : 'opacity-1 animate-fadeIn'} ${overlayClassName}`}>
       <div
-        className={`w-full h-full rounded shadow p-6 bg-white ${closing ? 'animate-hideY' : 'animate-appearY'} ${className}`}>
+        className={`w-full h-full rounded shadow p-6 bg-white ${isClosing ? 'animate-hideY' : 'animate-appearY'} ${className}`}>
         {children}
       </div>
     </div>
