@@ -20,8 +20,8 @@ const useMainPageModel = () => {
 
   useEffect(() => {
     if (!photoId || !data.items.length) return;
-    const index = data.items.findIndex(item => item.id === photoId);
-    setCurrentStep(index);
+    const index = data.entities.get(photoId)?.__root_index;
+    setCurrentStep(index ?? -1);
   }, [photoId, data]);
 
   useEffect(() => {
