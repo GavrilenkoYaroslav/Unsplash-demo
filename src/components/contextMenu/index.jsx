@@ -57,7 +57,7 @@ export default function ContextMenu({ trigger, options, callback, positioning = 
       <ul className={'relative z-10 w-full gap-px flex flex-col'}>
         {options.map(option =>
           <li key={option} onClick={onSelect} data-value={option}
-              className={`relative w-full flex-1 px-4 py-1 hover:cursor-pointer ${options.length > 1 ? 'last:after:absolute last:after:w-full last:after:h-px last:after:bg-white/[0.12] last:after:top-0 last:after:left-0' : ''}`}>
+              className={`relative w-full flex-1 px-4 py-1 hover:cursor-pointer hover:bg-white/10 ${options.length > 1 ? 'last:after:absolute last:after:w-full last:after:h-px last:after:bg-white/[0.12] last:after:top-0 last:after:left-0' : ''}`}>
             <div className={'flex items-center justify-start text-white text-sm'}>
               {option}
             </div>
